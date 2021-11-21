@@ -27,7 +27,7 @@ public class AdminControllers {
     public ModelAndView getSettingsPage(Model model){
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
         model.addAttribute("base_url",this.urlService.getUrl("/admin/api"));
-        model.addAttribute("destination_url",this.urlService.getUrl("/admin/api/destination"));
+        model.addAttribute("destination_url","/admin/api/destination");
         model.addAttribute("vehicle_url",this.urlService.getUrl("/admin/api/vehicle"));
         return new ModelAndView("general/settings");
     }
@@ -35,6 +35,7 @@ public class AdminControllers {
     public ModelAndView getRoutesPage(Model model){
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
         model.addAttribute("base_url",this.urlService.getUrl("/admin/api/route"));
+        model.addAttribute("create_route_url",this.urlService.getUrl("/admin/route/create"));
         model.addAttribute("userName",null);
         model.addAttribute("reservation_url",null);
         model.addAttribute("destination_url",this.urlService.getUrl("/admin/api/destination"));
@@ -56,6 +57,7 @@ public class AdminControllers {
         AdminRouteData data = this.routeFacade.getByIdforAdmin(id);
         model.addAttribute("data",data);
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
+        model.addAttribute("update_url",this.urlService.getUrl("/admin/api/route/"+id));
         model.addAttribute("destination_url",this.urlService.getUrl("/admin/api/destination"));
         return new ModelAndView("admin/route/route_details");
     }

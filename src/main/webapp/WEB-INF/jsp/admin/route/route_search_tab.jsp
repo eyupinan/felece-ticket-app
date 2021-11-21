@@ -10,4 +10,4 @@
         <input type="date" id="startDate" name="startDate">
 </label>
 <button type="button" class="btn btn-primary" onClick="onSearch()">Search</button>
-<a class="btn btn-primary" href="http://localhost:9001/admin/route/create">Create New</a>
+<a class="btn btn-primary" href="${create_route_url}">Create New</a>

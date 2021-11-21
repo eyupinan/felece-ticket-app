@@ -137,6 +137,7 @@
         </section>
      <script>
      destination_url="${destination_url}"
+     update_url="${update_url}"
      routeId=${id}
      </script>
      <script src="/js/alert.js"></script>

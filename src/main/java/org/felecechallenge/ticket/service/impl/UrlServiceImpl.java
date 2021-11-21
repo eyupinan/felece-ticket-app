@@ -17,18 +17,18 @@ public class UrlServiceImpl implements UrlService {
 
     public  String getUrl(String path){
         URL url;
-        String protocol="http";
-        if (isSSL==true){
+        String protocol="https";
+        /*if (isSSL==true){
             protocol="https";
-        }
+        }*/
         try{
             if (port!=-1){
-                url = new URL(protocol,host,port,path);
+                url = new URL(protocol,host,path);
             }
             else{
                 url = new URL(protocol,host,path);
             }
-
+            System.out.println(url.toString());
             return url.toString();
         }
         catch(Exception e){

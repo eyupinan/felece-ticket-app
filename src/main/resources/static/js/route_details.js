@@ -32,7 +32,7 @@ function destination_option_adder(res,select_id,value){
     })
 }
 function url_generator(){
-    base_url="http://localhost:9001/admin/api/route/"+routeId
+    base_url=update_url
     return base_url
 }
 function body_generator(){

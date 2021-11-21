@@ -1,5 +1,6 @@
 package org.felecechallenge.ticket.controller.user.view;
 
+import org.felecechallenge.ticket.enums.Roles;
 import org.felecechallenge.ticket.exception.ForbiddenException;
 import org.felecechallenge.ticket.facade.UserFacade;
 import org.felecechallenge.ticket.facade.dto.user.UserData;
@@ -23,6 +24,10 @@ public class UserControllers {
     @GetMapping("/routes")
     public ModelAndView getRoutesPage(Authentication auth, Model model){
         if (auth!=null){
+            UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+            if (principal.getUser().getRole()== Roles.ROLE_ADMIN){
+                return new ModelAndView("redirect:/admin/routes");
+            }
             model.addAttribute("userName",auth.getName());
             model.addAttribute("leftbar_url",this.urlService.getUrl("/template/user_leftbar.html"));
         }
@@ -42,7 +47,13 @@ public class UserControllers {
         return new ModelAndView("general/route");
     }
     @GetMapping("/tickets")
-    public ModelAndView getTicketsPage(Model model){
+    public ModelAndView getTicketsPage(Authentication auth, Model model){
+        if (auth!=null){
+            UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+            if (principal.getUser().getRole()== Roles.ROLE_ADMIN){
+                return new ModelAndView("redirect:/admin/tickets");
+            }
+        }
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/user_leftbar.html"));
         model.addAttribute("base_url",this.urlService.getUrl("/api/ticket"));
         model.addAttribute("route_url",this.urlService.getUrl("/api/route"));
