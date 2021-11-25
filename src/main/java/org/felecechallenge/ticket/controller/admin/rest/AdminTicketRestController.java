@@ -1,5 +1,6 @@
 package org.felecechallenge.ticket.controller.admin.rest;
 
+import org.felecechallenge.ticket.exception.ConflictException;
 import org.felecechallenge.ticket.facade.TicketFacade;
 import org.felecechallenge.ticket.facade.dto.ticket.AdminTicketTransferData;
 import org.felecechallenge.ticket.facade.dto.ticket.TicketPurchaseData;
@@ -8,7 +9,6 @@ import org.felecechallenge.ticket.filter.TicketFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping(value = "/admin/api/ticket")
@@ -21,13 +21,12 @@ public class AdminTicketRestController {
         return ticketData;
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public RedirectView purchase(TicketPurchaseData data){
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void purchase(@RequestBody TicketPurchaseData data){
         try{
             this.ticketFacade.saveTicket(data);
-            return new RedirectView("/admin/tickets?err=false");
         }catch (Exception e){
-            return new RedirectView("/admin/tickets?err=true");
+            throw new ConflictException();
         }
 
 

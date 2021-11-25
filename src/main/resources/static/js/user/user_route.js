@@ -6,7 +6,7 @@ function action(id){
     body.userName=userName
     body.routeId=id
     $.ajax({
-        url: reservation_url,
+        url: window.location.protocol+ "//" +window.location.host + reservation_path,
         type: "post",
         contentType:"application/json",
         data : JSON.stringify(body),
@@ -45,7 +45,7 @@ function url_generator(){
 	}
     var str = $.param( query_obj );
     if (str!==""){
-        url = base_url+"?"+str
+        url = window.location.protocol+ "//" +window.location.host + route_path+"?"+str
     }
     return url
 }

@@ -28,7 +28,7 @@ function body_generator(){
 }
 function onSubmit(){
      body = body_generator();
-     url =  post_url
+     url =    window.location.protocol+ "//" +window.location.host + user_post_path
      console.log( url+"?"+$.param(body))
      $.ajax({
                 url: url,
@@ -37,7 +37,7 @@ function onSubmit(){
                 contentType:"application/json",
                 success: function(res) {
 
-                    window.location.href="/admin/users?err=false"
+                    window.location.href=user_path + "?err=false"
                 },
                 error:function(){
                     var current_url = window.location;

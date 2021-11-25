@@ -19,4 +19,4 @@
         <input type="date" id="endDate" name="endDate">
 </label>
 <button type="button" class="btn btn-primary" onClick="onSearch()">Search</button>
-<a  class="btn btn-primary" href="/admin/tickets/create">Create New</a>
+<a  class="btn btn-primary" href="${ticket_create_path}">Create New</a>

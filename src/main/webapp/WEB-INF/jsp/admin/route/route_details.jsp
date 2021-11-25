@@ -14,8 +14,9 @@
     <body>
         <div id="leftbar"></div>
         <script>
+            leftbar_url =  window.location.protocol+ "//" +window.location.host + "${leftbar_path}"
                     $(function() {
-                        $("#leftbar").load("${leftbar_url}");
+                        $("#leftbar").load(leftbar_url);
                     });
         </script>
         <section class="page-content">
@@ -136,9 +137,10 @@
             </section>
         </section>
      <script>
-     destination_url="${destination_url}"
-     update_url="${update_url}"
+     destination_path="${destination_path}"
+     update_path="${update_path}"
      routeId=${id}
+     route_after_disable = "${route_after_disable}"
      </script>
      <script src="/js/alert.js"></script>
      <script src="/js/route_details.js"></script>

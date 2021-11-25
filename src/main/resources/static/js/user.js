@@ -19,7 +19,7 @@ function url_generator(){
     var str = $.param( query_obj );
     console.log(str)
     if (str!==""){
-        url = base_url+"?"+str
+        url =  window.location.protocol+ "//" +window.location.host + user_path +"?"+str
     }
     return url
 }

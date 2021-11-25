@@ -11,8 +11,9 @@
     <body>
         <div id="leftbar"></div>
         <script>
+                leftbar_url =  window.location.protocol+ "//" +window.location.host +  "${leftbar_path}"
                     $(function() {
-                        $("#leftbar").load("${leftbar_url}");
+                        $("#leftbar").load(leftbar_url);
                     });
                 </script>
         <section class="page-content">
@@ -39,10 +40,10 @@
 			</section>
 		</section>
 		<script>
-		base_url = "${base_url}"
-		route_url ="${route_url}"
-		destination_url = "${destination_url}"
-		update_url ="${update_url}"
+		ticket_path = "${ticket_path}"
+		route_path ="${route_path}"
+		destination_path = "${destination_path}"
+		update_path ="${update_path}"
 		</script>
 		<script src="/js/ticket.js"></script>
 		<script src="/js/alert.js"></script>

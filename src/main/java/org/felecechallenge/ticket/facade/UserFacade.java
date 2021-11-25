@@ -116,7 +116,7 @@ public class UserFacade {
         if (data.getPhone()!=null){
             user.setPhone(data.getPhone());
         }
-        if (data.getPhone()!=null){
+        if (data.getRole()!=null){
             user.setRole(data.getRole());
         }
         if (data.getPassword()!=null){

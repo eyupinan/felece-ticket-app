@@ -17,10 +17,11 @@
     <body>
         <div id="leftbar"></div>
         <script>
-                    $(function() {
-                        $("#leftbar").load("${leftbar_url}");
-                    });
-                </script>
+           leftbar_url =  window.location.protocol+ "//" +window.location.host +  "${leftbar_path}"
+               $(function() {
+                   $("#leftbar").load(leftbar_url);
+               });
+           </script>
         <section class="page-content">
         <p id="msg" hidden></p>
                 <article id="art" style="width:60%;" class="center">
@@ -57,7 +58,8 @@
 				</article>
 		</section>
 		<script>
-		post_url = "${post_url}"
+		user_path = "${user_path}"
+		user_post_path = "${user_post_path}"
 		</script>
 		<script src="/js/user_create.js"></script>
 		<script src="/js/alert.js"></script>

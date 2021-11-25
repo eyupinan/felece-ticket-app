@@ -1,6 +1,6 @@
 function getDestinationContent(){
     $.ajax({
-            url: destination_url,
+            url:  window.location.protocol+ "//" +window.location.host +  destination_path,
             type: "get",
             success: function(res) {
                 destination_option_adder(res)
@@ -51,14 +51,13 @@ function get_routeData(selected_date){
     if (endDestination!=null && endDestination!="empty"){
         params.endDestination=endDestination
         }
-    console.log("url:",route_url+"?"+$.param(params))
     $.ajax({
-            url: route_url+"?"+$.param(params),
+            url:  window.location.protocol+ "//" +window.location.host +  route_path+"?"+$.param(params),
             type: "get",
             success: function(res) {
                 routeData = res.routeData
                 if (params.startDestination!=undefined && params.endDestination!=undefined && routeData[0]!=undefined){
-                    date_option_adder()
+                    date_option_adder(true)
                 }
                 else{
                     empty_selects()
@@ -76,7 +75,7 @@ function empty_selects(){
     routeId[0].value=""
     routeId.html("")
 }
-function date_option_adder(){
+function date_option_adder(restart=false){
     var date = $("#date_select");
     var time =  $("#time_select");
     selected_date=date[0].value
@@ -90,11 +89,11 @@ function date_option_adder(){
             first=true
             $.each(routeData, function(i, item) {
                 var opt_date;
-                if (selected_date==undefined || selected_date===""){
+                if (selected_date==undefined || selected_date==="" || restart===true){
                     selected_date=item.date
                     date_part  = selected_date.split(" ")[0]
+                    restart=false
                 }
-                console.log("date part",date_part)
                 if (!usedDateList.includes(item.date.split(" ")[0])){
                     if (item.date.split(" ")[0]===date_part){
                         opt_date = $("<option selected>")
@@ -152,6 +151,41 @@ function calculate_new_routeId(){
     }
     route_el = $("#routeId")
     route_el[0].value = parseInt(routeId)
+}
+function body_generator(){
+    body ={}
+
+    routeId=$("#routeId")[0].value
+    username=$("#username")[0].value
+    if (routeId!=undefined && routeId!=""){
+        body.routeId=routeId
+    }
+    if (username!=undefined && username!=""){
+        body.userName=username
+    }
+    return body
+}
+function onSubmit(){
+     body = body_generator();
+     url =   window.location.protocol+ "//" +window.location.host + ticket_post_path
+     $.ajax({
+                url: url,
+                type: "post",
+                contentType:"application/json",
+                data : JSON.stringify(body),
+                success: function(res) {
+                    var current_url = window.location;
+                    var url = new URL(current_url);
+                    url.searchParams.set('err', "false");
+                    window.location.href=url
+                },
+                error:function(){
+                    var current_url = window.location;
+                    var url = new URL(current_url);
+                    url.searchParams.set('err', "true");
+                    window.location.href=url
+                }
+            });
 }
 $(document).ready(function(){
     getDestinationContent()

@@ -8,7 +8,7 @@
 
         <div class="login">
             <h1>Login</h1>
-            <form action="perform_login" method='POST'>
+            <form action="${login_path}" method='POST'>
             <input type="text" name="username" placeholder="Username" id="user" />
             <input type="password" name="password" placeholder="Password" id="password" />
             <input name="submit" type="submit" value="submit" />

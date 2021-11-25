@@ -11,8 +11,9 @@
     <body>
         <div id="leftbar"></div>
         <script>
+         leftbar_url = window.location.protocol+ "//" +window.location.host + "${leftbar_path}"
                     $(function() {
-                        $("#leftbar").load("${leftbar_url}");
+                        $("#leftbar").load(leftbar_url);
                     });
                 </script>
         <section class="page-content">
@@ -41,9 +42,9 @@
 		<script>
 		    action_button_label="${action_button_label}"
 		    userName="${userName}"
-            base_url = "${base_url}"
-            destination_url = "${destination_url}"
-            reservation_url =  "${reservation_url}"
+            route_path = "${route_path}"
+            destination_path = "${destination_path}"
+            reservation_path =  "${reservation_path}"
         </script>
         <script src="/js/${external_js}"></script>
 		<script src="/js/route.js"></script>

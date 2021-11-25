@@ -1,23 +1,33 @@
-function getDestinationContent(id){
+function getDestinationContent(select_id){
     $.ajax({
-            url: destination_url,
+            url: window.location.protocol+ "//" +window.location.host +  destination_path,
             type: "get",
             success: function(res) {
-                destination_option_adder(res,id)
+                select_option_adder(res,select_id,"name")
             }
     })
 }
-function destination_option_adder(res,id){
-    select = $("#"+id);
+function getVehicleContent(select_id){
+    $.ajax({
+            url: window.location.protocol+ "//" +window.location.host +  vehicle_path,
+            type: "get",
+            success: function(res) {
+                select_option_adder(res,select_id,"plate")
+            }
+    })
+}
+function select_option_adder(res,select_id,field_name){
+    var select = $("#"+select_id);
+
     $(function() {
         $.each(res, function(i, item) {
             var opt = $("<option>")
-            opt.value=item.name
-            opt.text=item.name
-            opt.html(item.name)
+            opt.value=item[field_name]
+            opt.text=item[field_name]
+            opt.html(item[field_name])
             select.append(opt.clone());
         })
-        var options = $('#'+id+' option');
+        var options = $('#'+select_id+' option');
         var arr = options.map(function(_, o) { return { t: $(o).text(), v: o.value }; }).get();
         arr.sort(function(o1, o2) { return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0; });
         options.each(function(i, o) {
@@ -27,7 +37,7 @@ function destination_option_adder(res,id){
         var default_opt = $("<option value='empty'>")
 
         default_opt.attr("selected",true)
-        default_opt.html("select destination")
+        default_opt.html("select")
         select.append(default_opt.clone())
     })
 }
@@ -80,7 +90,7 @@ function body_generator(){
 }
 function onSubmit(){
      body = body_generator();
-     url =  post_url
+     url =   window.location.protocol+ "//" +window.location.host + post_path
      $.ajax({
                 url: url,
                 type: "post",
@@ -103,6 +113,7 @@ function onSubmit(){
 $(document).ready(function(){
     getDestinationContent("select_start_destinations")
     getDestinationContent("select_end_destinations")
+    getVehicleContent("vehiclePlate")
     dateSynchronizer()
     create_alert("Route created successfully!","Error occured while creating route!")
 })

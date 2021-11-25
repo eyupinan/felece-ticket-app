@@ -26,7 +26,7 @@ function url_generator(){
 	}
     var str = $.param( query_obj );
     if (str!==""){
-        url = base_url+"?"+str
+        url = window.location.protocol+ "//" +window.location.host +  route_path+"?"+str
     }
     return url
 }

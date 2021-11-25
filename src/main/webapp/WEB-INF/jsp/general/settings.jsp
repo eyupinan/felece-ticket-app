@@ -13,8 +13,9 @@
     <body>
             <div id="leftbar"></div>
             <script>
+                leftbar_url = window.location.protocol+ "//" +window.location.host + "${leftbar_path}"
                         $(function() {
-                            $("#leftbar").load("${leftbar_url}");
+                            $("#leftbar").load(leftbar_url);
                         });
                     </script>
         <section class="page-content">
@@ -119,9 +120,9 @@
             </article>
 		<section>
 		<script>
-		base_url="${base_url}"
-		destination_url="${destination_url}"
-		vehicle_url="${vehicle_url}"
+		api_path = "/admin/api"
+		destination_path="${destination_path}"
+		vehicle_path="${vehicle_path}"
 		</script>
 		<script src="/js/settings.js"></script>
 		<script src="/js/alert.js"></script>

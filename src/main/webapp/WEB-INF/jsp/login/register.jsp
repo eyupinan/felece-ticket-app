@@ -8,7 +8,7 @@
 
         <div class="login">
             <h1>Register</h1>
-            <form action="api/user/create" method='POST'>
+            <form action="${user_create_path}" method='POST'>
             <input type="text" name="username" placeholder="Username" id="username" />
             <input type="text" name="phone" placeholder="Phone" id="phone" />
             <textarea name="address" placeholder="address" id="address" style="height:80px"></textarea>

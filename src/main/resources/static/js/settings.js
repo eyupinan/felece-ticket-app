@@ -1,6 +1,6 @@
 function getDestinationContent(){
     $.ajax({
-            url: destination_url,
+            url:  window.location.protocol+ "//" +window.location.host + destination_path,
             type: "get",
             success: function(res) {
                 fill_destination_table(res)
@@ -10,7 +10,7 @@ function getDestinationContent(){
 
 function getVehicleContent(){
     $.ajax({
-            url: vehicle_url,
+            url:  window.location.protocol+ "//" +window.location.host +  vehicle_path,
             type: "get",
             success: function(res) {
                 fill_vehicle_table(res)
@@ -75,7 +75,7 @@ function openTab(evt, tabName) {
 }
 function onSubmit(form,route="destination",method="post"){
     console.log(route)
-    url=base_url+"/"+route
+    url=  window.location.protocol+ "//" +window.location.host + api_path +"/"+route
     name=""
     data={}
     for (let i = 0; i < form.children.length; i++) {

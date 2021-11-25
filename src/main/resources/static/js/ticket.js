@@ -3,7 +3,7 @@ pageIndex=1
 routeMap={}
 function getDestinationContent(){
     $.ajax({
-            url: destination_url,
+            url:   window.location.protocol+ "//" +window.location.host +  destination_path,
             type: "get",
             success: function(res) {
                 destination_option_adder(res)
@@ -95,7 +95,7 @@ function url_generator(){
         }
     var str = $.param( query_obj );
     if (str!==""){
-        url = base_url+"?"+str
+        url =   window.location.protocol+ "//" +window.location.host +  ticket_path +"?"+str
     }
     return url
 }
@@ -201,7 +201,7 @@ function action(button,action_type,id,row_index){
     button = $(button)[0]
     if (action_type==="cancel"){
         $.ajax({
-                url: update_url,
+                url:  window.location.protocol+ "//" +window.location.host +  update_path,
                 type: "put",
                 contentType:"application/json",
                 data: JSON.stringify({id:id,state:"CANCELED"}),
@@ -251,7 +251,7 @@ function get_routeData(row_index,startDestination,endDestination,date){
     }
     params={startDestination:startDestination,endDestination:endDestination,date:date,full:false,sortBy:"date"}
     $.ajax({
-            url: route_url + "?"+$.param(params),
+            url:  window.location.protocol+ "//" +window.location.host +  route_path + "?"+$.param(params),
             type: "get",
             success: function(res) {
                 routeData = res.routeData
@@ -324,7 +324,7 @@ function saveUpdate(row_index,id){
         }
     }
     $.ajax({
-            url: update_url,
+            url:window.location.protocol+ "//" +window.location.host +  update_path,
             type: "put",
             contentType:"application/json",
             data: JSON.stringify({routeId:routeId,id:id,state:"POSTPONED",date:date}),

@@ -18,8 +18,9 @@
     <body>
         <div id="leftbar"></div>
         <script>
+                   leftbar_url =  window.location.protocol+ "//" +window.location.host + "${leftbar_path}"
                     $(function() {
-                        $("#leftbar").load("${leftbar_url}");
+                        $("#leftbar").load(leftbar_url);
                     });
                 </script>
         <section class="page-content">
@@ -47,15 +48,17 @@
                         <input type="text" class="form-control" id="price">
                         <div class="form-group">
                         <label for="vehiclePlate">vehiclePlate</label>
-                        <input type="text" class="form-control" id="vehiclePlate">
+                        <select name="vehiclePlate" class="form-control" id="vehiclePlate">
+                                                </select>
                       </div>
                       <button type="button" class="btn btn-primary" onclick="onSubmit()">Submit</button>
                     </form>
 				</article>
 		</section>
 		<script>
-		    post_url = "${post_url}"
-		    destination_url = "${destination_url}"
+		    post_path = "${post_path}"
+		    destination_path = "${destination_path}"
+		    vehicle_path = "${vehicle_path}"
 		</script>
 		<script src="/js/route_create.js"></script>
 		<script src="/js/alert.js"></script>

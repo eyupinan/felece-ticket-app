@@ -1,9 +1,8 @@
 pageCount=1
 pageIndex=1
 function getDestinationContent(){
-    console.log("destination url :",destination_url)
     $.ajax({
-            url: destination_url,
+            url: window.location.protocol+ "//" +window.location.host + destination_path,
             type: "get",
             success: function(res) {
                 destination_option_adder(res)

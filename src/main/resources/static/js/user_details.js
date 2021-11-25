@@ -48,10 +48,8 @@ function action(button,column_name){
 function putRequest(){
 
     body = body_generator()
-    console.log(body)
-    console.log(update_url+"?"+$.param(body))
      $.ajax({
-            url: update_url+"?"+$.param(body),
+            url:  window.location.protocol+ "//" +window.location.host + update_path+"?"+$.param(body),
             type: "put",
             contentType:"application/x-www-form-urlencoded",
             success: function(res) {
@@ -70,17 +68,18 @@ function putRequest(){
 }
 function disableRequest(id){
     $.ajax({
-            url: disable_url,
+            url:  window.location.protocol+ "//" +window.location.host + disable_path,
             type: "delete",
             success: function(res) {
-               var target_url = new URL(route_after_disable);
+               var target_url = new URL(window.location.protocol+"//"+window.location.host+route_after_disable);
                target_url.searchParams.set('err', "false");
+
                window.location.href=target_url
             },
             error:function(){
-               var target_url = new URL(route_after_disable);
+               var target_url = new URL(window.location.protocol+"//"+window.location.host+route_after_disable);
                target_url.searchParams.set('err', "true");
-               window.location.href=url
+               window.location.href=target_url
             }
         });
 }

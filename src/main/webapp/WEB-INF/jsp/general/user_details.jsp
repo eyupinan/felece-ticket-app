@@ -14,10 +14,11 @@
     <body>
         <div id="leftbar"></div>
         <script>
+                leftbar_url =  window.location.protocol+ "//" +window.location.host +  "${leftbar_path}"
                     $(function() {
-                        $("#leftbar").load("${leftbar_url}");
+                        $("#leftbar").load(leftbar_url);
                     });
-        </script>
+                </script>
         <section class="page-content">
         <div><p id="msg" hidden></p></div>
             <section class="grid">
@@ -125,8 +126,8 @@
         </section>
      <script>
         userId=${data.id}
-        update_url = "${update_url}"
-        disable_url= "${disable_url}"
+        update_path = "${update_path}"
+        disable_path= "${disable_path}"
         route_after_disable = "${route_after_disable}"
      </script>
      <script src="/js/alert.js"></script>

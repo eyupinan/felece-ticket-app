@@ -1,6 +1,6 @@
 function getDestinationContent(select_id,value=""){
     $.ajax({
-            url: destination_url,
+            url: window.location.protocol+ "//" +window.location.host + destination_path ,
             type: "get",
             success: function(res) {
                 destination_option_adder(res,select_id,value)
@@ -32,7 +32,7 @@ function destination_option_adder(res,select_id,value){
     })
 }
 function url_generator(){
-    base_url=update_url
+    base_url= window.location.protocol+ "//" +window.location.host + update_path
     return base_url
 }
 function body_generator(){
@@ -108,7 +108,6 @@ function action(button,column_name,value=""){
 
 }
 function putRequest(){
-    console.log("geldi put")
     url = url_generator()
     body = body_generator()
     console.log(body)
@@ -128,21 +127,17 @@ function deleteRequest(id){
             url: url,
             type: "delete",
            success: function(res) {
-               var current_url = window.location;
-               var url = new URL(current_url);
+               var url = new URL(window.location.protocol + "//" + window.location.host + route_after_disable);
                url.searchParams.set('err', "false");
                window.location.href=url
            },
            error:function(){
-               var current_url = window.location;
-               var url = new URL(current_url);
+               var url = new URL(window.location.protocol + "//" + window.location.host + route_after_disable);
                url.searchParams.set('err', "true");
                window.location.href=url
            }
         });
 }
 $(document).ready(function(){
-    //getDestinationContent()
-    //dateSynchronizer()
     create_alert("Route updated successfully!","Error occured while updating route")
 })

@@ -18,14 +18,15 @@
     <body>
         <div id="leftbar"></div>
         <script>
+                leftbar_url =  window.location.protocol+ "//" +window.location.host +  "${leftbar_path}"
                     $(function() {
-                        $("#leftbar").load("${leftbar_url}");
+                        $("#leftbar").load(leftbar_url);
                     });
                 </script>
         <section class="page-content">
         <p id="msg" hidden></p>
                 <article id="art" style="width:60%;" class="center">
-                    <form action="../../admin/api/ticket" method="POST" accept-charset="utf-8">
+                    <form onsubmit()="return false;" method="POST" accept-charset="utf-8">
                       <div class="form-group">
                         <label for="select_start_destinations">Start Destination Name</label>
                         <select class="form-control" id="select_start_destinations" onchange="get_routeData()">
@@ -51,13 +52,14 @@
                         <label for="username">Username</label>
                         <input type="text" class="form-control" id="username" name="userName">
                         </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="button" onclick="onSubmit()" class="btn btn-primary">Submit</button>
                     </form>
 				</article>
 		</section>
 		<script>
-		destination_url="${destination_url}"
-		route_url="${route_url}"
+		destination_path="${destination_path}"
+		route_path="${route_path}"
+		ticket_post_path="${ticket_post_path}"
 		</script>
 		<script src="/js/ticket_create.js"></script>
 		<script src="/js/alert.js"></script>

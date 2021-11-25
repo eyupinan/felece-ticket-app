@@ -10,11 +10,12 @@
     </head>
     <body>
         <div id="leftbar"></div>
-        <script>
-                    $(function() {
-                        $("#leftbar").load("${leftbar_url}");
-                    });
-                </script>
+       <script>
+           leftbar_url =  window.location.protocol+ "//" +window.location.host +  "${leftbar_path}"
+               $(function() {
+                   $("#leftbar").load(leftbar_url);
+               });
+           </script>
         <section class="page-content">
             <section class="grid">
             <p id="msg" hidden></p>
@@ -32,7 +33,7 @@
                                  Search By Username: <input type="search" class="search" id="search_by_username" placeholder="search by username">
                             </label>
                             <button type="button" class="btn btn-primary" onClick="onSearch()">Search</button>
-                            <a class="btn btn-primary" href="/admin/users/create">Create New</a>
+                            <a class="btn btn-primary" href="${user_create_path}">Create New</a>
                          </div>
                          <div id="page_buttons"></div>
 						 <table class="table table-striped table-hover">
@@ -65,7 +66,7 @@
 			</section>
 		</section>
 		<script>
-		    base_url="${base_url}"
+		    user_path="${user_path}"
 		</script>
 		<script src="/js/user.js"></script>
 		<script src="/js/alert.js"></script>
