@@ -8,6 +8,7 @@ import org.felecechallenge.ticket.facade.UserFacade;
 import org.felecechallenge.ticket.facade.dto.ticket.TicketPurchaseData;
 import org.felecechallenge.ticket.facade.dto.user.NewUserData;
 import org.felecechallenge.ticket.facade.dto.user.UserData;
+import org.felecechallenge.ticket.facade.dto.user.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -48,9 +49,27 @@ public class UserRestController {
         return new RedirectView("/login");
     }
     @PutMapping(value="/update/{id}",consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public void updateUserJson(NewUserData data,@PathVariable Long id){
-        data.setRole(Roles.ROLE_USER);
-        userFacade.updateUser(id,data);
+    public void updateUserJson(Authentication auth ,NewUserData data,@PathVariable Long id){
+        UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+        if (principal.getUser().getId()==id){
+            data.setRole(Roles.ROLE_USER);
+            userFacade.updateUser(id,data);
+        }
+        else{
+            throw new ForbiddenException();
+        }
+
+    }
+    @DeleteMapping(value="/delete/{id}")
+    public void deleteUser(Authentication auth ,@PathVariable Long id){
+        UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+        if (principal.getUser().getId()==id){
+            userFacade.disableUser(id);
+        }
+        else{
+            throw new ForbiddenException();
+        }
+
     }
 
 }

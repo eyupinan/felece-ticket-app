@@ -1,6 +1,5 @@
 package org.felecechallenge.ticket.facade;
 
-import org.felecechallenge.ticket.enums.Roles;
 import org.felecechallenge.ticket.exception.BadRequestException;
 import org.felecechallenge.ticket.exception.ConflictException;
 import org.felecechallenge.ticket.facade.converter.Converter;
@@ -101,8 +100,8 @@ public class UserFacade {
         userDataMapper(user,data);
         this.userService.save(user);
     }
-    public void deleteUser(String username){
-        this.userService.delete(username);
+    public void disableUser(Long id){
+        this.userService.disable(id);
     }
     public void userDataMapper(User user,NewUserData data){
         if (data.getEmail()!=null){

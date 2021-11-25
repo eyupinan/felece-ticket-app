@@ -38,10 +38,14 @@ public class AccountController {
         if (data.getRole()== Roles.ROLE_ADMIN){
             model.addAttribute("update_url",this.urlService.getUrl("/admin/api/user/update/"+data.getId()));
             model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
+            model.addAttribute("disable_url",this.urlService.getUrl("/admin/api/user/"+data.getId()));
+            model.addAttribute("route_after_disable",this.urlService.getUrl("/perform_logout"));
         }
         else if (data.getRole()== Roles.ROLE_USER){
             model.addAttribute("leftbar_url",this.urlService.getUrl("/template/user_leftbar.html"));
             model.addAttribute("update_url",this.urlService.getUrl("/api/user/update/"+data.getId()));
+            model.addAttribute("disable_url",this.urlService.getUrl("/api/user/delete/"+data.getId()));
+            model.addAttribute("route_after_disable",this.urlService.getUrl("/perform_logout"));
         }
 
         return new ModelAndView("/general/user_details");

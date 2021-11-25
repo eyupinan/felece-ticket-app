@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/admin/api/user")
@@ -54,13 +52,13 @@ public class AdminUserRestController {
     public void updateUserById(NewUserData data,@PathVariable Long id){
         userFacade.updateUser(id,data);
     }
-    @DeleteMapping(value = "/{username}")
-    public void updateUserByPath(@PathVariable String username){
-        userFacade.deleteUser(username);
+    @DeleteMapping(value = "/{id}")
+    public void updateUserByPath(@PathVariable Long id){
+        userFacade.disableUser(id);
     }
     @DeleteMapping
-    public void updateUserByParam(@RequestParam(value = "username",required = true) String username){
-        userFacade.deleteUser(username);
+    public void updateUserByParam(@RequestParam(value = "id",required = true) Long id){
+        userFacade.disableUser(id);
     }
 
 }

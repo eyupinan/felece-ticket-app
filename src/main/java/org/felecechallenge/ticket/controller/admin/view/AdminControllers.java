@@ -82,6 +82,8 @@ public class AdminControllers {
     public ModelAndView getUserDetails(Model model,@PathVariable Long id){
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
         model.addAttribute("update_url",this.urlService.getUrl("/admin/api/user/"+id));
+        model.addAttribute("disable_url",this.urlService.getUrl("/admin/api/user/"+id));
+        model.addAttribute("route_after_disable",this.urlService.getUrl("/admin/users"));
         try{
             UserData data = this.userFacade.getUserDataById(id);
             model.addAttribute("data",data);

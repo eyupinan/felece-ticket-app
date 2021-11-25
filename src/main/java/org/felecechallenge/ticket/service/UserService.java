@@ -15,5 +15,5 @@ public interface UserService extends UserDetailsService {
     public Page<User> findByFilter(UserFilter filter);
     public User getById(Long id);
     public void save(User user);
-    public void delete(String username);
+    public void disable(Long id);
 }

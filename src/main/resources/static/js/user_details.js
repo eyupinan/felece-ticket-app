@@ -68,21 +68,18 @@ function putRequest(){
             }
         });
 }
-function deleteRequest(id){
-    url = url_generator()
+function disableRequest(id){
     $.ajax({
-            url: url,
+            url: disable_url,
             type: "delete",
             success: function(res) {
-                var current_url = window.location;
-               var url = new URL(current_url);
-               url.searchParams.set('err', "false");
-               window.location.href=url
+               var target_url = new URL(route_after_disable);
+               target_url.searchParams.set('err', "false");
+               window.location.href=target_url
             },
             error:function(){
-                var current_url = window.location;
-               var url = new URL(current_url);
-               url.searchParams.set('err', "true");
+               var target_url = new URL(route_after_disable);
+               target_url.searchParams.set('err', "true");
                window.location.href=url
             }
         });

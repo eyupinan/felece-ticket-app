@@ -24,11 +24,6 @@ public class RouteServiceImpl implements RouteService {
         return route;
     }
     public Page<Route> getRoutesQuery(RouteFilter filter){
-        /*Date startDate = filter.getDate();
-        Calendar cal =new GregorianCalendar();
-        cal.setTime(startDate);
-        cal.add(Calendar.DATE,1);
-        Date endDate = cal.getTime();*/
         String sortby = filter.getSortBy();
         Integer limit =filter.getLimit();
         Integer offset = filter.getOffset();

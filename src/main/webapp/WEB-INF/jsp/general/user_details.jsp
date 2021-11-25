@@ -119,13 +119,15 @@
 
                 </article>
                 <div>
-                        <button type="button" class="btn btn-primary" onClick="deleteRequest(${id})">Delete User</button>
+                        <button type="button" class="btn btn-primary" onClick="disableRequest(${id})">Disable User</button>
                         </div>
             </section>
         </section>
      <script>
         userId=${data.id}
         update_url = "${update_url}"
+        disable_url= "${disable_url}"
+        route_after_disable = "${route_after_disable}"
      </script>
      <script src="/js/alert.js"></script>
      <script src="/js/user_details.js"></script>

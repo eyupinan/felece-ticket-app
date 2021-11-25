@@ -8,6 +8,7 @@ import org.felecechallenge.ticket.repository.UserRepository;
 import org.felecechallenge.ticket.service.UserService;
 import org.felecechallenge.ticket.specification.UserSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,30 +27,17 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository,PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository,PasswordEncoder passwordEncoder , @Value("${admin.username:admin}") String adminUsername,
+                           @Value("${admin.password:admin}") String adminPassword) {
         this.passwordEncoder=passwordEncoder;
         this.userRepository = userRepository;
         List<User> admins = this.userRepository.findByRole(Roles.ROLE_ADMIN);
         if (admins.isEmpty()){
             User defaultAdmin = new User();
-            defaultAdmin.setUsername("admin");
-            defaultAdmin.setAddress("Gazipaşa mah. nemlioğlu konak sok. Konak Apt. no 14 daire 6");
-            defaultAdmin.setPhone(5062624264L);
-            defaultAdmin.setEmail("eyupinan0@gmail.com");
-            defaultAdmin.setPassword(passwordEncoder.encode("admin"));
+            defaultAdmin.setUsername(adminUsername);
+            defaultAdmin.setPassword(passwordEncoder.encode(adminPassword));
             defaultAdmin.setRole(Roles.ROLE_ADMIN);
             this.userRepository.save(defaultAdmin);
-        }
-        List<User> usr = this.userRepository.findByRole(Roles.ROLE_USER);
-        if (usr.isEmpty()){
-            User defaultUsr = new User();
-            defaultUsr.setUsername("user");
-            defaultUsr.setAddress("Gazipaşa mah. nemlioğlu konak sok. Konak Apt. no 15 daire 6");
-            defaultUsr.setPhone(5062624265L);
-            defaultUsr.setEmail("eyupinan1@gmail.com");
-            defaultUsr.setPassword(passwordEncoder.encode("user"));
-            defaultUsr.setRole(Roles.ROLE_USER);
-            this.userRepository.save(defaultUsr);
         }
     }
 
@@ -75,8 +63,10 @@ public class UserServiceImpl implements UserService {
         this.userRepository.save(user);
     }
     @Transactional
-    public void delete(String username){
-        this.userRepository.deleteByUsername(username);
+    public void disable(Long id){
+        User user = this.getById(id);
+        user.setDisabled(true);
+        this.userRepository.save(user);
     }
 
     public Page<User> findByFilter(UserFilter filter) {

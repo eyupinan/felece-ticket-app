@@ -30,6 +30,15 @@ public class User {
 
     private Date createdAt;
     private Date updatedAt;
+    private Boolean disabled=false;
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
 
     public Date getCreatedAt() {
         return createdAt;

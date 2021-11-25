@@ -21,7 +21,7 @@ public class UserSpecification {
                 if (filter.getUsername() != null) {
                     predicates.add(cb.equal(root.get("username"), filter.getUsername()));
                 }
-
+                predicates.add(cb.notEqual(root.get("disabled"), true));
 
                 return cb.and(predicates.toArray(new Predicate[predicates.size()]));
             }
