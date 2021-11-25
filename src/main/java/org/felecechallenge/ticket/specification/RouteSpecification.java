@@ -36,6 +36,7 @@ public class RouteSpecification {
                 if (filter.getFull() != null) {
                     predicates.add(cb.equal(root.get("isFull"), filter.getFull()));
                 }
+                predicates.add(cb.notEqual(root.get("disabled"), true));
 
                 return cb.and(predicates.toArray(new Predicate[predicates.size()]));
             }

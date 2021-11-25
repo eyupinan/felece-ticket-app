@@ -39,8 +39,10 @@ public class RouteServiceImpl implements RouteService {
     public void saveRoute(Route route){
         this.routeRepository.save(route);
     }
-    public void deleteRoute(Long id){
-        this.routeRepository.deleteById(id);
+    public void disableRoute(Long id){
+        Route route = this.routeRepository.getById(id);
+        route.setDisabled(true);
+        this.saveRoute(route);
     }
     public void updateTicketParameters(Long routeId){
         Route route = this.getRouteById(routeId);

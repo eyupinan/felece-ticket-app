@@ -131,7 +131,7 @@
 
                 </article>
                 <div>
-                        <button type="button" class="btn btn-primary" onClick="deleteRequest(${id})">Delete Route</button>
+                        <button type="button" class="btn btn-primary" onClick="deleteRequest(${id})">Disable Route</button>
                         </div>
             </section>
         </section>

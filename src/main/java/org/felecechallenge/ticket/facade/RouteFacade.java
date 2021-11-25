@@ -85,7 +85,7 @@ public class RouteFacade {
         routeService.saveRoute(route);
     }
     public void deleteRoute(Long id){
-        routeService.deleteRoute(id);
+        routeService.disableRoute(id);
     }
     public void adminRouteDTOMapper(Route route,AdminRouteData data){
 

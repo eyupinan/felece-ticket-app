@@ -27,6 +27,7 @@ public class Route {
     private Date date;
 
     private BigDecimal price;
+    private Boolean disabled = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonManagedReference
@@ -39,6 +40,14 @@ public class Route {
     private Boolean isFull=false;
     private Date createdAt;
     private Date updatedAt;
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
 
     public Boolean getFull() {
         return isFull;

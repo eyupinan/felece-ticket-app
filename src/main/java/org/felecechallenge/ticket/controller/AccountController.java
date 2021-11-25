@@ -44,7 +44,6 @@ public class AccountController {
             model.addAttribute("update_url",this.urlService.getUrl("/api/user/update/"+data.getId()));
         }
 
-        model.addAttribute("leftbar_url",this.urlService.getUrl("/template/user_leftbar.html"));
         return new ModelAndView("/general/user_details");
     }
 }

@@ -8,7 +8,7 @@ public interface RouteService {
     Route getRouteById(Long id);
     Page<Route> getRoutesQuery(RouteFilter filter);
     public void saveRoute(Route route);
-    public void deleteRoute(Long id);
+    public void disableRoute(Long id);
     public void updateTicketParameters(Long routeId);// this function works for updating route's ticket count and isFull parameter
     public boolean isFull(Long id);
 }
