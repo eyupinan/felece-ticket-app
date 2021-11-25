@@ -50,7 +50,7 @@ public class AdminControllers {
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
         model.addAttribute("post_url",this.urlService.getUrl("/admin/api/route"));
         model.addAttribute("destination_url",this.urlService.getUrl("/admin/api/destination"));
-        return new ModelAndView("admin/route/create_route");
+        return new ModelAndView("admin/route/route_create");
     }
     @GetMapping("/route/{id}")
     public ModelAndView getRoute(Model model, @PathVariable Long id){
@@ -97,13 +97,13 @@ public class AdminControllers {
     public ModelAndView getCreateUserPage(Model model){
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
         model.addAttribute("post_url",this.urlService.getUrl("/admin/api/user"));
-        return new ModelAndView("admin/user/create_user");
+        return new ModelAndView("admin/user/user_create");
     }
     @GetMapping("/tickets/create")
     public ModelAndView getCreateTicketPage(Model model){
         model.addAttribute("leftbar_url",this.urlService.getUrl("/template/admin_leftbar.html"));
         model.addAttribute("destination_url",this.urlService.getUrl("/admin/api/destination"));
         model.addAttribute("route_url",this.urlService.getUrl("/admin/api/route"));
-        return new ModelAndView("admin/ticket/create_ticket");
+        return new ModelAndView("admin/ticket/ticket_create");
     }
 }

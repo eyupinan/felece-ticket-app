@@ -59,7 +59,7 @@
 		<script>
 		post_url = "${post_url}"
 		</script>
-		<script src="/js/create_user.js"></script>
+		<script src="/js/user_create.js"></script>
 		<script src="/js/alert.js"></script>
 	</body>
 </html>

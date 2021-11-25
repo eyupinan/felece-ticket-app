@@ -59,7 +59,7 @@
 		destination_url="${destination_url}"
 		route_url="${route_url}"
 		</script>
-		<script src="/js/create_ticket.js"></script>
+		<script src="/js/ticket_create.js"></script>
 		<script src="/js/alert.js"></script>
 	</body>
 </html>
