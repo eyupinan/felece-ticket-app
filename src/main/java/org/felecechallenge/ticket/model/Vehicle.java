@@ -20,6 +20,15 @@ public class Vehicle {
     @JsonIgnore
     private List<Route> routes;
     private Long totalSeatCount;
+    private Boolean disabled= false;
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
 
     public Long getTotalSeatCount() {
         return totalSeatCount;

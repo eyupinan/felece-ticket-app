@@ -9,5 +9,5 @@ public interface VehicleService {
     public Vehicle getVehicleByPlate(String plate);
     public List<Vehicle> getAll();
     public void saveVehicle(Vehicle vehicle);
-    public void deleteVehicle(Long id);
+    public void disableVehicle(Long id);
 }

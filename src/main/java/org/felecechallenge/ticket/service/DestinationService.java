@@ -9,5 +9,5 @@ public interface DestinationService {
     public Destination getByName(String name);
     public List<Destination> getAll();
     public void save(Destination destination);
-    public void delete(Long id);
+    public void disableDestination(Long id);
 }

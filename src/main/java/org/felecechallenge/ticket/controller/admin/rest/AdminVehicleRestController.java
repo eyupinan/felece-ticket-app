@@ -30,4 +30,8 @@ public class AdminVehicleRestController {
     public void update(@RequestBody VehicleData vehicle){
         this.vehicleFacade.updateVehicle(vehicle);
     }
+    @DeleteMapping(value="/{id}")
+    public void disable(@PathVariable Long id){
+        this.vehicleFacade.disableVehicle(id);
+    }
 }

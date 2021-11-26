@@ -32,6 +32,9 @@ public class VehicleFacade {
         vehicleDataMapper(vehicle,data);
         this.vehicleService.saveVehicle(vehicle);
     }
+    public void disableVehicle(Long id){
+        this.vehicleService.disableVehicle(id);
+    }
     public void vehicleDataMapper(Vehicle vehicle, VehicleData data){
         if (data.getId()!=null){
             vehicle.setId(data.getId());

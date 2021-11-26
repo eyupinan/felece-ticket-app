@@ -14,6 +14,16 @@ public class Destination {
     @NotNull
     private String name;
 
+    private Boolean disabled= false;
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
     public Long getId() {
         return id;
     }

@@ -28,10 +28,12 @@ public class DestinationServiceImpl implements DestinationService {
     }
 
     @Override
-    public void delete(Long id) {
-        destinationRepository.deleteById(id);
+    public void disableDestination(Long id) {
+        Destination destination = this.getById(id);
+        destination.setDisabled(true);
+        this.save(destination);
     }
     public List<Destination> getAll(){
-        return destinationRepository.findAll();
+        return destinationRepository.findByDisabledNot(true);
     }
 }

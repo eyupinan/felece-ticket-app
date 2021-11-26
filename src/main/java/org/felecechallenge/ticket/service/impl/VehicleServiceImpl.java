@@ -19,7 +19,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> getAll() {
-        return vehicleRepository.findAll();
+        return vehicleRepository.findByDisabledNot(true);
     }
 
     @Override
@@ -27,8 +27,10 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.save(vehicle);
     }
     @Override
-    public void deleteVehicle(Long id) {
-        vehicleRepository.deleteById(id);
+    public void disableVehicle(Long id) {
+        Vehicle vehicle = this.getVehicleById(id);
+        vehicle.setDisabled(true);
+        this.saveVehicle(vehicle);
     }
     @Override
     public Vehicle getVehicleByPlate(String plate){

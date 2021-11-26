@@ -33,8 +33,8 @@ public class AdminDestinationRestController {
         }
 
     }
-    @DeleteMapping
-    public void deleteDestination(@RequestParam Long id){
-        this.destinationService.delete(id);
+    @DeleteMapping(value = "/{id}")
+    public void deleteDestination(@PathVariable Long id){
+        this.destinationService.disableDestination(id);
     }
 }

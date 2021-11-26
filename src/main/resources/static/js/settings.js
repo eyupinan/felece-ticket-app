@@ -85,7 +85,7 @@ function onSubmit(form,route="destination",method="post"){
       if (form.children[i].name.trim()==="id"){
               data.id=form.children[i].value
               if (method==="delete"){
-                          url=url+"?id="+data.id
+                          url=url+"/"+data.id
               }
       }
       if (form.children[i].name.trim()==="plate"){
