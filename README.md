@@ -5,7 +5,7 @@
  * register sayfasından sadece user hesabı oluşturulabilir, admin hesabı ise başka bir admin tarafından oluşturulması gerekir. Default admin bilgileri:
  ```
  admin.username=admin
- admin.password=administrator
+ admin.password=administrator123
  ```
  şeklindedir.(Chrome şifre ile alakalı uyarı verebilir sebebi şifrenin kısa olmasıdır.)
 ### User
@@ -29,8 +29,4 @@
  * user ``` /api ``` ön ekine sahip ``` /route ``` , ``` /ticket ``` ,  ``` /user ``` adresleri üzerinden kendisine has işlemler yapabilir.
  * user kısmında ``` /api/user/create ``` adresi herkese açık bırakılmıştır. Bu adres ile kayıt işlemi yapılabilir.
 ### Admin 
-<<<<<<< HEAD
 * user ``` /admin/api ``` ön ekine sahip ``` /route ``` , ``` /ticket ``` ,  ``` /user ``` adresleri üzerinden tüm verilere erişeşek şekilde işlem yapabilir.
-=======
-* user ``` /admin/api ``` ön ekine sahip ``` /route ``` , ``` /ticket ``` ,  ``` /user ``` adresleri üzerinden kendisine has işlemler yapabilir.
->>>>>>> 65d6ed5f57fda7ca9a6377a14ebfd44b08407bcb

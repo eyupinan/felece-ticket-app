@@ -34,6 +34,6 @@ public class VehicleServiceImpl implements VehicleService {
     }
     @Override
     public Vehicle getVehicleByPlate(String plate){
-        return this.vehicleRepository.findByPlate(plate);
+        return this.vehicleRepository.findByPlateAndDisabledNot(plate,true);
     }
 }

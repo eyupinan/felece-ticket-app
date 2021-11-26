@@ -19,7 +19,7 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public Destination getByName(String name) {
-        return destinationRepository.findByName(name);
+        return destinationRepository.findByNameAndDisabledNot(name,true);
     }
 
     @Override

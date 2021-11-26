@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface DestinationRepository extends JpaRepository<Destination,Long> {
-    public Destination findByName(String name);
+    public Destination findByNameAndDisabledNot(String name,Boolean disabled);
     public List<Destination> findByDisabledNot(Boolean disabled);
 }

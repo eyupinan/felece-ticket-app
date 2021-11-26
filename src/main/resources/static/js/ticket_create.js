@@ -173,7 +173,7 @@ function onSubmit(){
                 type: "post",
                 contentType:"application/json",
                 data : JSON.stringify(body),
-                success: function(res) {
+                success: function(res,status) {
                     var current_url = window.location;
                     var url = new URL(current_url);
                     url.searchParams.set('err', "false");

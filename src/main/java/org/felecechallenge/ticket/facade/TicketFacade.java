@@ -63,11 +63,32 @@ public class TicketFacade {
         if ((data.getUserId()==null && data.getUserName()==null) || data.getRouteId()==null){
             throw new BadRequestException();
         }
+        if (data.getUserId()!=null){
+            try{
+                User user = this.userService.getById(data.getUserId());
+                if (user==null){
+                    throw new Exception();
+                }
+            }catch (Exception e){
+                throw new NotFoundException();
+            }
+        }
+        else if (data.getUserName()!=null){
+            try{
+                User user = this.userService.getUserByName(data.getUserName());
+                if (user==null){
+                    throw new Exception();
+                }
+            }catch (Exception e){
+                throw new NotFoundException();
+            }
+        }
         Ticket ticket =new Ticket();
         ticket.setState(TicketState.RECEIPT);
         this.ticketPurchaseDataMapper(ticket,data);
         if (this.routeService.isFull(data.getRouteId())){
             throw new ConflictException();
+
         }
         this.ticketService.save(ticket);
         this.routeService.updateTicketParameters(data.getRouteId());

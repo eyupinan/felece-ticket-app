@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle,Long> {
-    Vehicle findByPlate(String plate);
+    Vehicle findByPlateAndDisabledNot(String plate,Boolean disabled);
     List<Vehicle> findByDisabledNot(Boolean disabled);
 }
