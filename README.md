@@ -2,11 +2,8 @@
 ## Arayüz 
 ### Login/Register
  * ``` /register ``` sayfasından user hesabı oluşturulabilir ve ``` /login ``` sayfasında hesaba giriş yapılabilir.
- * register sayfasından sadece user hesabı oluşturulabilir, admin hesabı ise başka bir admin tarafından oluşturulması gerekir. Default admin bilgileri:
- ```
- admin.username=admin
- admin.password=administrator123
- ```
+ * register sayfasından sadece user hesabı oluşturulabilir, admin hesabı ise başka bir admin tarafından oluşturulması gerekir. Default admin user'lar ```admin,admin2,admin3``` 
+ve şifreleri ``` administrator_123```
  şeklindedir.(Chrome şifre ile alakalı uyarı verebilir sebebi şifrenin kısa olmasıdır.)
 ### User
  * Arayüzde kayıt olmamış kişiler tarafından görüntülenebilen tek sayfa ``` /routes ``` sayfasıdır. Bu sayfada kullanıcılar filtreleme işlemi ile tarih ve durakları girerek rotalarını seçip rezervasyon tuşuna bastıklarında login sayfasına yönlendirilirler. Kullanıcı kayıt olup login olduktan sonra rezervasyon butonuna basması ile bastığı route ve kullanıcıların bilgileri ile birlikte ticket oluşturulmaktadır. 

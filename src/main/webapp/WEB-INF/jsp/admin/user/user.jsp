@@ -24,7 +24,7 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h2>Routes</h2>
+                                    <h2>Users</h2>
                                 </div>
                             </div>
                         </div>
